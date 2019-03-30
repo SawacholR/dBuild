@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+    <h1>payment by {{ user.get_user }}</h1>
+
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+
+        {% for field in form.visible_fields %}
+            {{ field.name }}
+            {{ field}}
+            {{ field.errors }}
+        {% endfor %}
+        <p><input type="submit" value="Submit"></p>
+    </form>
+{% endblock %}
+

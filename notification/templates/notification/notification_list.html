@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Room List</h1>
+  {% if global %}
+  <ul>
+    {% for g in global %}
+      <li>
+        <a href="{% url 'noti-detail' g.pk %} }">{{ g.Topic }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no news</p>
+  {% endif %}       
+{% endblock %}
