@@ -1,12 +1,13 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Room List</h1>
+  <h1>News</h1>
   {% if global %}
+
   <ul>
     {% for g in global %}
       <li>
-        <a href="{% url 'noti-detail' g.pk %} }">{{ g.Topic }}</a>
+        <a href="{% url 'noti-detail' g.pk %} ">{{ g.Topic }}</a>
       </li>
     {% endfor %}
   </ul>

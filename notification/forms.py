@@ -7,5 +7,5 @@ class CreateNotificationForm(forms.ModelForm):
 
     class Meta:
         model = GlobalNotification
-        fields = ['Topic', 'Detail', 'Date', 'Picture']
+        fields = ['Topic', 'Detail', 'Date', 'Picture', 'Working_Hour', 'Pay']
 

@@ -2,7 +2,18 @@ from django.shortcuts import render
 from homedetail.models import Room
 from notification.models import GlobalNotification
 from .forms import CreateNotificationForm
+from django.core.paginator import Paginator
 # Create your views here.
+
+
+def show_picture(request):
+    random_pic = GlobalNotification.objects.all()
+    paginator = Paginator(random_pic, 2)
+    page = request.GET.get('page')
+    current = paginator.get_page(page)
+
+    return render(request, 'notification/show-pic.html', {'global': random_pic,
+                                                          'page': current})
 
 
 def view_notification(request):
@@ -11,9 +22,14 @@ def view_notification(request):
 
 
 def detail_notification(request, pk):
-    global_notification = GlobalNotification.objects.filter(id=pk)
+    global_notification = GlobalNotification.objects.filter(id__exact=pk)
     print(global_notification)
-    return render(request, 'notification/notification_detail.html', {'global': global_notification})
+    picture = global_notification.values('Picture').get()
+    picture_path = picture['Picture']
+    print(global_notification.values('Picture').get())
+    print(picture_path)
+    return render(request, 'notification/notification_detail.html', {'notification': global_notification,
+                                                                     'picture_path': picture_path})
 
 
 def notification_creation(request):
@@ -28,13 +44,16 @@ def notification_creation(request):
             detail = form.cleaned_data['Detail']
             picture = form.cleaned_data['Picture']
             date = form.cleaned_data['Date']
+            working = form.cleaned_data['Working_Hour']
+            pay = form.cleaned_data['Pay']
             noti = GlobalNotification(Topic=topic,
                                       Detail=detail,
                                       Picture=picture,
-                                      Date=date)
+                                      Date=date,
+                                      Working_Hour=working,
+                                      Pay=pay)
             noti.save()
-
-            return render(request, 'notification/notification_detail.html', {'notification': noti})
+            return render(request, 'notification/created.html', {'notification': noti})
         else:
             print(request.FILES)
             print(form.errors)

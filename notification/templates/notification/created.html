@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+  <h1> {{ notification.Topic }}</h1>
+
+  <p><strong>Topic:</strong> {{ notification.Topic }}</p> <!-- author detail link not yet defined -->
+  <p><strong>Detail:</strong> {{ notification.Detail}}</p>
+  <p><strong>Date:</strong> {{ notification.Date }}</p>
+  <p><strong>posted date:</strong> {{ notification.Created_date }}</p>
+  <p><strong>Working Hour:</strong> {{ notification.Working_Hour }}</p>
+  <p><strong>Pay:</strong> {{ notification.Pay }}</p>
+  <img src={{ notification.Picture.url }}/>
+  <a href="{% url 'noti' %}">Back</a>
+
+{% endblock %}

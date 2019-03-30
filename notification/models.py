@@ -13,7 +13,9 @@ class GlobalNotification(models.Model):
     Detail = models.TextField(max_length=1000, help_text='Enter a brief description of the notification')
     Created_date = models.DateTimeField(auto_now_add=True)
     Picture = models.ImageField(upload_to='evidences/', null=True)
-    Date = models.DateField(null=True, blank=True)
+    Working_Hour = models.PositiveIntegerField(null=True)
+    Pay = models.PositiveIntegerField(null=True)
+    Date = models.DateField(null=True, blank=True, help_text='Please enter in the format mm/dd/yyyy')
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
