@@ -8,6 +8,15 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 
+def view_profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
+    return render(request, 'homedetail/profile.html', args)
+
+
 def index(request):
     """View function for home page of site."""
 
@@ -20,3 +29,5 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
