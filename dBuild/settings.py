@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'homedetail.apps.HomedetailConfig',
     'notification.apps.NotificationConfig',
     'social_django',  # social media app after installing via pip install social-auth-app-django
 ]
@@ -52,7 +53,7 @@ MIDDLEWARE = [
     'social_django.middleware.SocialAuthExceptionMiddleware',  # connect to social media
 ]
 
-ROOT_URLCONF = 'DBuild.urls'
+ROOT_URLCONF = 'Condo.urls'
 
 TEMPLATES = [
     {
@@ -142,7 +143,8 @@ STATIC_URL = '/static/'
 # Redirect to home URL after login (Default redirects to /homedetail/)
 LOGIN_URL = 'login'  # redirect url in case the user is not LOGIN yet
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/homedetail'
+LOGIN_REDIRECT_URL = '/homedetail'
 
 # For picture
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
