@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>room {{ room.RoomNumber }}</h1>
+
+  <p><strong>Room number:</strong> {{ room.RoomNumber }}</p> <!-- author detail link not yet defined -->
+  <p><strong>Room Detail:</strong> {{ room.RoomDetail}}</p>
+  <p><strong>Room Status:</strong> {{ room.get_status_display }}</p>
+  <p><strong>Room Owner of the Room:</strong> {{ room.UserID.first_name }}</p>
+   <a href="{% url 'room-data' room.RoomId %}"> click here</a>
+
+{% endblock %}

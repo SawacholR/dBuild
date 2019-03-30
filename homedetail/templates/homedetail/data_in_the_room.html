@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Data in the room </h1>
+
+    {% if data %}
+    <table>
+        <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Unit</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        </tr>
+      {% for d in data %}
+        <tr>
+            <td>{{ d.DataDate }}</td>
+            <td>{{ d.Data_type.DataType_Name }}</td>
+            <td>{{ d.UnitUsed }}</td>
+            <td>{{ d.get_status_display }}</td>
+            <td><a href="{{ d.get_absolute_url }}">view detail</a></td>
+             <td>
+                 {% if d.status  == 'N' %}
+                <a href="{% url 'invoice-create' d.id %}">Pay Now</a>
+                 {% endif %}
+             </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+      <p>There are no data in the room.</p>
+    {% endif %}       
+{% endblock %}
