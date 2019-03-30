@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from homedetail.models import Room
 from notification.models import GlobalNotification
 from .forms import CreateNotificationForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -32,6 +32,7 @@ def detail_notification(request, pk):
                                                                      'picture_path': picture_path})
 
 
+@login_required
 def notification_creation(request):
     user = request.user
     if request.method == 'GET':

@@ -1,5 +1,4 @@
 from django.db import models
-from homedetail.models import Room, Data
 from django.urls import reverse
 from django.dispatch import receiver
 from django.db.models.signals import post_save
