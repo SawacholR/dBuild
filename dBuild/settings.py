@@ -142,8 +142,7 @@ STATIC_URL = '/static/'
 # Redirect to home URL after login (Default redirects to /homedetail/)
 LOGIN_URL = 'login'  # redirect url in case the user is not LOGIN yet
 LOGOUT_URL = 'logout'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/homedetail'
-LOGIN_REDIRECT_URL = '/homedetail'
+LOGIN_REDIRECT_URL = '/'
 
 # For picture
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
