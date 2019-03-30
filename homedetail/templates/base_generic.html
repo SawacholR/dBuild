@@ -18,10 +18,9 @@
         <ul class="sidebar-nav">
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'show-pic' %}">Gallery</a> </li>
-            <li><a href="{% url 'noti' %}">Notification</a></li>
-            <li><a href="{% url 'create-noti'%}">Created Notification</a> </li>
-
-           {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'noti' %}">PWD Report</a></li>
+            <li><a href="{% url 'create-noti'%}">Created Report</a> </li>
                <li>User: {{ user.get_username}}</li>
                <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
            {% else %}
